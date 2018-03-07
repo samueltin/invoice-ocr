@@ -9,7 +9,7 @@ def detent_text(image_file):
 
     invoice_img = os.path.join(IMAGE_DIR, image_file)
     ocr_result = call_vision.get_document(invoice_img, call_vision.FeatureType.BLOCK)
-    print (ocr_result)
+    print ('ocr result = ', ocr_result)
 
     return ocr_result
 
@@ -18,7 +18,7 @@ def categorize_invoice(ocr_result, index_list):
     for i in index_list:
         intent = call_dialogflow.get_response(ocr_result[i])
         intent_list.append(intent)
-    print (intent_list)
+    print ('intent list = ',intent_list)
     return intent_list
 
 

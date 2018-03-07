@@ -28,10 +28,10 @@ def get_response(utter):
     if resp.status_code == 200:
         temp = resp.json()
         logger.debug("result from df=%s", temp)
-        print("result from df={}".format(temp))
+        # print("result from df={}".format(temp))
         intentName = temp['result']['metadata']['intentName']
         logger.debug("Intent=%s", intentName)
-        print("Intent={}".format(intentName) )
+        # print("Intent={}".format(intentName) )
         return intentName
     else:
         logger.error("Error calling DF: status_code=%d, text=%s", resp.status_code, resp.text)
