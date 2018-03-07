@@ -1,16 +1,16 @@
 import requests
 import logging
+import os
 
 logger = logging.getLogger(__name__)
 
 DF_SESSION_ID = "1337"
-DF_TOKEN='38f2265537f24444928dfda6e3fad193'
+DF_TOKEN=os.environ['INVOICE_OCR_DIALOGFLOW_TOKEN']
 DF_URL='https://api.dialogflow.com/v1/query?v=20150910'
 DF_PROJECT_ID = 'invoice-items'
 
 
 def get_response(utter):
-    token = DF_TOKEN
 
     data = {
         "lang": "zh-cn",
@@ -21,7 +21,7 @@ def get_response(utter):
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer {0}".format(token)
+        "Authorization": "Bearer {0}".format(DF_TOKEN)
     }
 
     resp = requests.post(DF_URL, json=data, headers=headers)
